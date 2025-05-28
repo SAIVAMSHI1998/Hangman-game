@@ -2,13 +2,29 @@ import tkinter as tk
 from tkinter import messagebox
 import random
 from playsound import playsound
+import requests
 
+url = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc"
+headers = {
+    "accept": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MDExOTg1ZWM1ZWIzYzdjNTBjOWVlOGY3YmI2M2Q2OSIsIm5iZiI6MTc0ODQ0NDc0Ni4yMTIsInN1YiI6IjY4MzcyNjRhZDliMDNiYjI3MTA1NjJjMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RDFSP_ZYmvYIsHsdgazKHI4iJIAHFX_ST5CdVJ9Qlg8"
+}
 
-# Define the list of words
-words = ["apple", "banana", "cherry", "orange", "lemon", "grape", "pineapple", "watermelon"]
+response = requests.get(url, headers=headers)
+print(response.text)
+
+def get_movie_titles():
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        data = response.json()
+        movie_titles = [movie['title'] for movie in data['results']]
+        return movie_titles
+    else:
+        print("Failed to fetch movies:", response.status_code)
+        return []
 
 # Choose a random word from the list
-word = random.choice(words)
+word = random.choice(movies)
 
 # Initialize the number of guesses and the list of guessed letters
 guesses = 6
