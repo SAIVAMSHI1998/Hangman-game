@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 import random
-from playsound import playsound
+from playsound import playsound # type: ignore
 import requests
 
 url = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc"
@@ -18,13 +18,14 @@ def get_movie_titles():
     if response.status_code == 200:
         data = response.json()
         movie_titles = [movie['title'] for movie in data['results']]
-        return movie_titles
+        #return movie_titles
     else:
         print("Failed to fetch movies:", response.status_code)
         return []
 
 # Choose a random word from the list
-word = random.choice(movies)
+movies = get_movie_titles()
+words = random.choice(movies)
 
 # Initialize the number of guesses and the list of guessed letters
 guesses = 6
