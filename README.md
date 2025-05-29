@@ -24,7 +24,6 @@ Replace "Bearer " in the code with your TMDB API bearer token.
 
 Run the script:
 
-bash
-Copy
-Edit
+paste this in the Terminal:
+
 python hangman_gui.py  
