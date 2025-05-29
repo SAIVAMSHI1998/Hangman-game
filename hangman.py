@@ -7,7 +7,7 @@ import requests
 url = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc"
 headers = {
     "accept": "application/json",
-    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MDExOTg1ZWM1ZWIzYzdjNTBjOWVlOGY3YmI2M2Q2OSIsIm5iZiI6MTc0ODQ0NDc0Ni4yMTIsInN1YiI6IjY4MzcyNjRhZDliMDNiYjI3MTA1NjJjMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RDFSP_ZYmvYIsHsdgazKHI4iJIAHFX_ST5CdVJ9Qlg8"
+    "Authorization": "Bearer "
 }
 
 def get_movie_titles():
